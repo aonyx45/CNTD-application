@@ -10,4 +10,4 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello_world():
-    return "<h1>Hello from API : " + APP_NAME + "</h1>" + "<p>Return <a href=\"/\">home</a></p>"
+    return "<h1>Hello from Python API : " + APP_NAME + "</h1>" + "<p>Return <a href=\"/\">home</a></p>"

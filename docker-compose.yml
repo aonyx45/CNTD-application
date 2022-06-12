@@ -21,17 +21,30 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
   
-  api: 
-    build: ./microservice
+  python-api: 
+    build: ./microservices/python
     # container_name: api
-    hostname: api
+    hostname: python-api
     restart: always
     volumes:
-      - ./microservice/scripts:/app
+      - ./microservices/python/scripts:/app
     ports:
       - 5000
     environment: 
       FLASK_APP: /app/script.py
+    deploy:
+      mode: replicated
+      replicas: 2
+
+  nodejs-api: 
+    build: ./microservices/nodejs
+    # container_name: api
+    hostname: nodejs-api
+    restart: always
+    volumes:
+      - ./microservices/nodejs/scripts:/app
+    ports:
+      - 5000
     deploy:
       mode: replicated
       replicas: 2
