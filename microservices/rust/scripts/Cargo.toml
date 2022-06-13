@@ -1,4 +1,3 @@
-cargo-features = ["resolver"]
 cargo-features = ["edition2021"]
 
 [package]
