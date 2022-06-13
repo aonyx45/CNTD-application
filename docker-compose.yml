@@ -48,3 +48,16 @@ services:
     deploy:
       mode: replicated
       replicas: 2
+
+  rust-api:
+    build: ./microservices/rust
+    # container_name: api
+    hostname: rust-api
+    restart: always
+    volumes:
+      - ./microservices/rust/scripts:/app
+    ports:
+      - 5000
+    deploy:
+      mode: replicated
+      replicas: 2
