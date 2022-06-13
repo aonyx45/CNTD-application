@@ -1,7 +1,8 @@
 FROM rust:1.61
 
 RUN apt-get update
-RUN cargo fix --edition
+RUN rustup default nightly
+RUN rustup update
 
 WORKDIR /app
 
