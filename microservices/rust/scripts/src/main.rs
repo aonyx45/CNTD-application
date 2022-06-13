@@ -1,8 +1,14 @@
-use actix_web::{get, web, App, HttpServer, Responder};
+use actix_web::{get, App, HttpServer, Responder};
+use rand::{distributions::Alphanumeric, Rng}; // 0.8
 
-#[get("/hello")]
+#[get("/")]
 async fn greet() -> impl Responder {
-    return "<h1>Hello there !</h1>"
+    let APP_NAME: String = rand::thread_rng()
+    .sample_iter(&Alphanumeric)
+    .take(10)
+    .map(char::from)
+    .collect();
+    return format!("{}{}{}{}", "<h1>Hello from Python API : ", APP_NAME, "</h1>", "<p>Return <a href=\"/\">home</a></p>")
 }
 
 #[actix_web::main] // or #[tokio::main]
